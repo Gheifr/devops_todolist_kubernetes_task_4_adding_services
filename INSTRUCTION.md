@@ -4,7 +4,7 @@
 metadata:  
   `name: todoapp-1`
 Застосуй файл:  
-`kubectl apply -f todoapp-pod.yml -n mateapp`  
+`kubectl apply -f todoapp-pod.yml -n todoapp`  
 2. Перевірити статус подів  
 
 `kubectl get pods -n todoapp`  
@@ -13,7 +13,7 @@ metadata:
 3. Встановити namespace за замовчуванням
 
 kubectl config set-context --current --namespace=todoapp
-Тепер можна не вказувати -n mateapp у наступних командах.
+Тепер можна не вказувати -n todoapp у наступних командах.
 
 4. 📦 Створити сервіс ClusterIP
 У Visual Studio Code створити файл clusterIp.yml зі вмістом:  
@@ -23,7 +23,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: todoapp-service
-  namespace: mateapp
+  namespace: todoapp
 spec:
   selector:
     app: todoapp
