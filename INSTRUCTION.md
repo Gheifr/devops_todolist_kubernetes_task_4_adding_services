@@ -4,15 +4,15 @@
 metadata:  
   `name: todoapp-1`
 Застосуй файл:  
-`kubectl apply -f todoapp-pod.yml -n todoapp`  
+`kubectl apply -f todoapp-pod.yml -n mateapp`  
 2. Перевірити статус подів  
 
-`kubectl get pods -n todoapp`  
+`kubectl get pods -n mateapp`  
 Очікувано: два поди з назвою todoapp та todoapp-1 мають статус Running.
 
 3. Встановити namespace за замовчуванням
 
-kubectl config set-context --current --namespace=todoapp
+`kubectl config set-context --current --namespace=mateapp`
 Тепер можна не вказувати -n todoapp у наступних командах.
 
 4. 📦 Створити сервіс ClusterIP
@@ -23,7 +23,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: todoapp-service
-  namespace: todoapp
+  namespace: mateapp
 spec:
   selector:
     app: todoapp
@@ -64,7 +64,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: todoapp-nodeport-service
-  namespace: todoapp
+  namespace: mateapp
 spec:
   type: NodePort
   selector:
